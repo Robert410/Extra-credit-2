@@ -2,6 +2,7 @@
 #include <string>
 #include <iostream>
 #include <fstream>
+#include <iomanip>
 
 Image::Image() {
 	///
@@ -107,9 +108,90 @@ bool Image::save(std::string imagePath) {
 	bool ok = 1;
 	std::ofstream fout(imagePath);
 	for (int i = 0; i < this->m_height; i++, fout << "\n")
-		for (int j = 0; j < this->m_width; j++)
-			fout << this->m_data[i][j] << " ";
+		for (int j = 0; j < this->m_width; j++) {
+			fout << this->m_data[i][j];
+			fout << std::setw(8);
+		}
 	return ok;
+}
+
+std::ostream& operator<<(std::ostream& os,Image& dt) {
+	/// <summary>
+	/// Allows to cout<< an imd
+	/// </summary>
+	/// <param name="os">param for output</param>
+	/// <param name="dt">our image which we display</param>
+	/// <returns>the output</returns>
+	dt.save("matrix.out");
+	return os;
+}
+
+void Image::operator=(const Image& other) {
+	/// <summary>
+	/// copy an image into another img
+	/// </summary>
+	/// <param name="other">the image we are copying</param>
+	for (int i = 0; i < other.m_height; i++)
+		for (int j = 0; j < other.m_width; j++)
+			this->m_data[i][j] = other.m_data[i][j];
+}
+
+void Image::operator+(const Image& i) {
+	/// <summary>
+	/// addition of two images
+	/// </summary>
+	/// <param name="i">the second img</param>
+	for (int k = 0; k < i.m_height; k++)
+		for (int j = 0; j < i.m_width; j++)
+			this->m_data[k][j] += i.m_data[k][j];
+}
+
+void Image::operator-(const Image& i) {
+	/// <summary>
+	/// substract from an image other image
+	/// </summary>
+	/// <param name="i">the second image</param>
+	for (int k = 0; k < i.m_height; k++)
+		for (int j = 0; j < i.m_width; j++)
+			this->m_data[k][j] -= i.m_data[k][j];
+}
+
+void Image::setP(unsigned int x, unsigned int y, unsigned int val) {
+	/// <summary>
+	/// set a valua at a given pixel
+	/// </summary>
+	/// <param name="x">x coordinate</param>
+	/// <param name="y">y coordinate</param>
+	/// <param name="val">value</param>
+	this->m_data[x][y] = val;
+}
+
+static Image zeros(unsigned int width, unsigned int height) {
+	/// <summary>
+	/// fill an image with 0
+	/// </summary>
+	/// <param name="width">width of the image</param>
+	/// <param name="height">height of the img</param>
+	/// <returns>the img after</returns>
+	Image img;
+	for (int k = 0; k < height; k++)
+		for (int j = 0; j < width; j++)
+			img.setP(k, j, 0);
+	return img;
+}
+
+static Image ones(unsigned int width, unsigned int height) {
+	/// <summary>
+	/// fill an image with 1
+	/// </summary>
+	/// <param name="width">width of the image</param>
+	/// <param name="height">height of the img</param>
+	/// <returns>the img after</returns>
+	Image img;
+	for (int k = 0; k < height; k++)
+		for (int j = 0; j < width; j++)
+			img.setP(k, j, 1);
+	return img;
 }
 
 bool Image::isEmpty() const {

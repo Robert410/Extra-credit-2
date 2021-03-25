@@ -31,11 +31,11 @@ public:
 	bool save(std::string imagePath); //1
 
 	//overload
-	friend std::ostream& operator<<(std::ostream& os, const Image& dt);
-	Image& operator=(const Image& other);
-	Image operator+(const Image& i);
-	Image operator-(const Image& i);
-	Image operator*(const Image& i);
+	friend std::ostream& operator<<(std::ostream& os, Image& dt); //1
+	void operator=(const Image& other); //1
+	void operator+(const Image& i); //1
+	void operator-(const Image& i); //1
+	void operator*(const Image& i);
 	
 	//image empty or not
 	bool isEmpty() const; //1
@@ -55,7 +55,9 @@ public:
 	bool getROI(Image& roiImg, unsigned int x, unsigned int y, unsigned int width, unsigned int height);
 	
 	//special image filled with 0/1
-	static Image zeros(unsigned int width, unsigned int height);
-	static Image ones(unsigned int width, unsigned int height);
+	static Image zeros(unsigned int width, unsigned int height); //1
+	static Image ones(unsigned int width, unsigned int height); //1
 
+	//setpixel
+	void setP(unsigned int x, unsigned int y, unsigned int val);
 };

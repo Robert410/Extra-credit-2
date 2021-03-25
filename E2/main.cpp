@@ -6,6 +6,6 @@
 int main() {
 	Image img;
 	img.load("brain.pgm");
-	img.save("matrix.out");
+	std::cout << img;
 	return 0;
 }
