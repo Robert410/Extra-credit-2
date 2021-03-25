@@ -24,7 +24,7 @@ public:
 
 	//two methods that load and save an image from/to a .pgm filex
 	
-
+	//P2 720 486 255
 	bool load(std::string imagePath); //1
 
 
