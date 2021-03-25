@@ -5,10 +5,12 @@
 #include "Rectangle.h"
 
 class Image{
+
 private:
 	unsigned int** m_data;
 	unsigned int m_width;
 	unsigned int m_height;
+
 public:
 	//cONSTRUCTOR
 	Image(); //1
@@ -35,14 +37,14 @@ public:
 	void operator=(const Image& other); //1
 	void operator+(const Image& i); //1
 	void operator-(const Image& i); //1
-	void operator*(const Image& i);
+	void operator*(const Image& i); 
 	
 	//image empty or not
 	bool isEmpty() const; //1
 
 	//pixel at a given point
-	unsigned int& at(Point pt); //1
-	unsigned int& at(unsigned int x, unsigned int y); //1
+	unsigned int at(Point pt); //1
+	unsigned int at(unsigned int x, unsigned int y); //1
 
 	//s a pointer to a row in the image
 	unsigned int* row(int y);  //1

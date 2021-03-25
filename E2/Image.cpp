@@ -166,7 +166,7 @@ void Image::setP(unsigned int x, unsigned int y, unsigned int val) {
 	this->m_data[x][y] = val;
 }
 
-static Image zeros(unsigned int width, unsigned int height) {
+Image Image::zeros(unsigned int width, unsigned int height) {
 	/// <summary>
 	/// fill an image with 0
 	/// </summary>
@@ -180,7 +180,7 @@ static Image zeros(unsigned int width, unsigned int height) {
 	return img;
 }
 
-static Image ones(unsigned int width, unsigned int height) {
+Image Image::ones(unsigned int width, unsigned int height) {
 	/// <summary>
 	/// fill an image with 1
 	/// </summary>
@@ -209,7 +209,7 @@ bool Image::isEmpty() const {
 }
 
 
-unsigned int& Image::at(Point pt){
+unsigned int Image::at(Point pt){
 	/// <summary>
 	/// Get a pixel at a given point
 	/// </summary>
@@ -218,7 +218,7 @@ unsigned int& Image::at(Point pt){
 	return this -> m_data[pt.getX()][pt.getY()];
 }
 
-unsigned int& Image::at(unsigned int x, unsigned int y) {
+unsigned int Image::at(unsigned int x, unsigned int y) {
 	/// <summary>
 	/// Get a pixel at a given point
 	/// </summary>
@@ -245,4 +245,41 @@ void Image::release() {
 	/// Release the space of the memory of the image
 	/// </summary>
 	delete[] this->m_data;
+}
+
+bool Image::getROI(Image& roiImg, unsigned int x, unsigned int y, unsigned int height, unsigned int width) {
+	/// <summary>
+	/// Get a smallar image( if ti is possible from our image)
+	/// </summary>
+	/// <param name="roiImg">the new img</param>
+	/// <param name="x">x coordonate of the start point</param>
+	/// <param name="y">y coordonate</param>
+	/// <param name="height"></param>
+	/// <param name="width"></param>
+	/// <returns></returns>
+	if (x<0 || y<0 || x + height>this->m_height or y + width> this->m_width)
+		return 0;
+	for (int i = 0; i < height; i++)
+		for (int j = 0; j < width; j++)
+			roiImg.m_data[i][j] = this->m_data[i + x][j + y];
+	roiImg.m_height = height;
+	roiImg.m_width = width;
+	return 1;
+}
+
+bool Image::getROI(Image& roiImg, Rectangle roiRect) {
+	/// <summary>
+	/// Get a smallar image( if ti is possible from our image)
+	/// </summary>
+	/// <param name="roiImg">the new img</param>
+	/// <param name="roiRect">our rectangle</param>
+	/// <returns></returns>
+	if (roiRect.getX()<0 || roiRect.getY()<0 || roiRect.getX() + roiRect.getH() >this->m_height or roiRect.getY() + roiRect.getW() > this->m_width)
+		return 0;
+	for (int i = 0; i < roiRect.getH(); i++)
+		for (int j = 0; j < roiRect.getW(); j++)
+			roiImg.m_data[i][j] = this->m_data[i + roiRect.getX()][j + roiRect.getY()];
+	roiImg.m_height = roiRect.getH();
+	roiImg.m_width = roiRect.getW();
+	return 1;
 }

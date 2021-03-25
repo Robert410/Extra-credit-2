@@ -1,10 +1,15 @@
 #pragma once
 class Rectangle
 {
+public:
+	int getX()const;
+	int getY()const;
+	int getW()const;
+	int getH()const;
 private:
-	float x;
-	float y;
-	float w;
-	float h;
+	int x;
+	int y;
+	int w;
+	int h;
 };
 
