@@ -2,8 +2,10 @@
 class Point
 {
 private:
-	float x;
-	float y;
-
+	unsigned int x;
+	unsigned int y;
+public:
+	unsigned int getX() const;
+	unsigned int getY() const;
 };
 

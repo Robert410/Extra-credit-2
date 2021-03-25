@@ -10,9 +10,9 @@ Image::Image() {
 	/*int** arr = new int* [1000];
 	for (int i = 0; i < 1000; i++)
 		arr[i] = new int[1000];*/
-	this->m_data = new int* [1000];
+	this->m_data = new unsigned int * [1000];
 	for (int i = 0; i < 1000; i++)
-		this->m_data[i] = new int[1000];
+		this->m_data[i] = new unsigned int[1000];
 	this->m_height = 0;
 	this->m_width = 0;
 }
@@ -112,3 +112,55 @@ bool Image::save(std::string imagePath) {
 	return ok;
 }
 
+bool Image::isEmpty() const {
+	/// <summary>
+	/// Verify if a image is empty or not
+	/// </summary>
+	/// <returns>a boolean</returns>
+	if (this->m_height == 0 or this->m_width == 0)
+		return 0;
+	for (int i = 0; i < this->m_height; i++)
+		for (int j = 0; j < this->m_width; j++)
+			if (this->m_data[i][j] == NULL)
+				return 0;
+	return 1;
+}
+
+
+unsigned int& Image::at(Point pt){
+	/// <summary>
+	/// Get a pixel at a given point
+	/// </summary>
+	/// <param name="pt">our point</param>
+	/// <returns>the pixel</returns>
+	return this -> m_data[pt.getX()][pt.getY()];
+}
+
+unsigned int& Image::at(unsigned int x, unsigned int y) {
+	/// <summary>
+	/// Get a pixel at a given point
+	/// </summary>
+	/// <param name="x">x coordinate</param>
+	/// <param name="y">y coordinate</param>
+	/// <returns>the pixel</returns>
+	return this->m_data[x][y];
+}
+
+unsigned int* Image::row(int y) {
+	/// <summary>
+	/// Get a row of pixels of the image
+	/// </summary>
+	/// <param name="y">the row</param>
+	/// <returns>That specific row in an array</returns>
+	unsigned int *arr = new unsigned int[1000];
+	for (int i = 0; i < this->m_width; i++)
+		arr[i] = this->m_data[y][i];
+	return arr;
+}
+
+void Image::release() {
+	/// <summary>
+	/// Release the space of the memory of the image
+	/// </summary>
+	delete[] this->m_data;
+}

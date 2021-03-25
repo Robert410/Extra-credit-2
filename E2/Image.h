@@ -6,7 +6,7 @@
 
 class Image{
 private:
-	int** m_data;
+	unsigned int** m_data;
 	unsigned int m_width;
 	unsigned int m_height;
 public:
@@ -38,17 +38,17 @@ public:
 	Image operator*(const Image& i);
 	
 	//image empty or not
-	bool isEmpty() const;
+	bool isEmpty() const; //1
 
 	//pixel at a given point
-	unsigned char& at(Point pt);
-	unsigned char& at(unsigned int x, unsigned int y);
+	unsigned int& at(Point pt); //1
+	unsigned int& at(unsigned int x, unsigned int y); //1
 
 	//s a pointer to a row in the image
-	unsigned char* row(int y);
+	unsigned int* row(int y);  //1
 
 	//releases the memory allocated for the image
-	void release();
+	void release();//1
 
 	//a portion of the image to filter or apply some operation on
 	bool getROI(Image& roiImg, Rectangle roiRect);
