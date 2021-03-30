@@ -18,7 +18,8 @@ public:
 	Image(const Image& other); //1
 	~Image(); //1
 
-	
+	friend class ImageProcessing;
+
 	//getters for the height and width of the image
 	Size size() const; //1
 	unsigned int width() const; //1
@@ -62,4 +63,12 @@ public:
 
 	//setpixel
 	void setP(unsigned int x, unsigned int y, unsigned int val);
+	
+	void setH(unsigned int H) {
+		this->m_height = H;
+	}
+
+	void setW(unsigned int H) {
+		this->m_width = H;
+	}
 };

@@ -2,6 +2,7 @@
 class Rectangle
 {
 public:
+	Rectangle();
 	int getX()const;
 	int getY()const;
 	int getW()const;
@@ -12,4 +13,3 @@ private:
 	int w;
 	int h;
 };
-

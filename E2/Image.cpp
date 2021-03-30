@@ -11,9 +11,12 @@ Image::Image() {
 	/*int** arr = new int* [1000];
 	for (int i = 0; i < 1000; i++)
 		arr[i] = new int[1000];*/
+
+
 	this->m_data = new unsigned int * [1000];
 	for (int i = 0; i < 1000; i++)
 		this->m_data[i] = new unsigned int[1000];
+
 	this->m_height = 0;
 	this->m_width = 0;
 }
@@ -110,7 +113,7 @@ bool Image::save(std::string imagePath) {
 	for (int i = 0; i < this->m_height; i++, fout << "\n")
 		for (int j = 0; j < this->m_width; j++) {
 			fout << this->m_data[i][j];
-			fout << std::setw(8);
+			fout << std::setw(15);
 		}
 	return ok;
 }
