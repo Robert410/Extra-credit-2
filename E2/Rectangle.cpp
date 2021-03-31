@@ -7,12 +7,22 @@ Rectangle::Rectangle() {
 	x = 0; y = 0; w = 0; h = 0;
 }
 
+Rectangle::Rectangle(int xPos, int yPos, int width, int height) {
+	this->x = xPos;
+	this->y = yPos;
+	this->w = width;
+	this->h = height;
+}
+
+
 int Rectangle::getX()const {
 	/// <summary>
 	/// get the x coordinate
 	/// </summary>
 	return this->x;
 }
+
+
 
 int Rectangle::getY()const {
 	/// <summary>

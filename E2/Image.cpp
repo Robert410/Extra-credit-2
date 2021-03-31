@@ -17,6 +17,8 @@ Image::Image() {
 	for (int i = 0; i < 1000; i++)
 		this->m_data[i] = new unsigned int[1000];
 
+	this->type = 'P';
+	this->number = 0;
 	this->m_height = 0;
 	this->m_width = 0;
 }
@@ -27,9 +29,11 @@ Image::Image(unsigned int w, unsigned int h) {
 	/// </summary>
 	/// <param name="w">width</param>
 	/// <param name="h">height</param>
-	this->m_height = h;
-	this->m_width = w;
-	this->m_data = NULL;
+	m_height = h;
+	m_width = w;
+	m_data = NULL;
+	this->type = 'P';
+	this->number = 0;
 }
 
 Image::Image(const Image& other) {
@@ -37,16 +41,20 @@ Image::Image(const Image& other) {
 	/// Copy a constructor Image
 	/// </summary>
 	/// <param name="other">The other image for the copy</param>
-	this->m_height = other.m_height;
-	this->m_width = other.m_width;
-	this->m_data = other.m_data;
+	m_height = other.m_height;
+	m_width = other.m_width;
+	this->type = other.type;
+	this->number = other.number;
+	for (int i = 0; i < m_height; i++)
+		for (int j = 0; j < m_width; j++)
+			m_data[i][j] = other.m_data[i][j];
 }
 
 Image::~Image() {
 	/// <summary>
 	/// deconstructor
 	/// </summary>
-	delete[] this->m_data;
+	delete[] m_data;
 }
 
 unsigned int Image::width() const{
@@ -54,7 +62,7 @@ unsigned int Image::width() const{
 	/// Get the width of the image
 	/// </summary>
 	/// <returns>width</returns>
-	return this->m_width;
+	return m_width;
 }
 
 unsigned int Image::height() const {
@@ -62,7 +70,7 @@ unsigned int Image::height() const {
 	/// Get the height of the image
 	/// </summary>
 	/// <returns>height</returns>
-	return this->m_height;
+	return m_height;
 }
 
 Size Image::size() const{
@@ -83,16 +91,16 @@ bool Image::load(std::string imagePath) {
 	/// <param name="imagePath">The file we are looking for</param>
 	/// <returns>a boolean if the files was open or not</returns>
 	bool ok = 1;
-	std::string line;
 	std::ifstream fin(imagePath);
-	getline(fin, line);
-	if (line == "")ok = 0;
-	std::cout << line;
+	fin >> type >> number;
+	//std::cout << type << number;;
+	//if (line == "")ok = 0;
+	//std::cout << line;
 	fin >> this->m_height >> this->m_width;
-	std::cout << "\n" << this->m_height << " " << this->m_width;
+	//std::cout << "\n" << this->m_height << " " << this->m_width;
 	int pixels;
 	fin >> pixels;
-	std::cout << ' ' << pixels;
+	//std::cout << ' ' << pixels;
 	/*int** arr = new int* [1000];
 	for (int i = 0; i < 1000; i++)
 		arr[i] = new int[1000];*/
@@ -110,6 +118,8 @@ bool Image::save(std::string imagePath) {
 	/// <returns>a bool if the file was open</returns>
 	bool ok = 1;
 	std::ofstream fout(imagePath);
+	fout << type << number << '\n' << m_height << " " << m_width;
+	fout << "\n255\n";
 	for (int i = 0; i < this->m_height; i++, fout << "\n")
 		for (int j = 0; j < this->m_width; j++) {
 			fout << this->m_data[i][j];
@@ -134,6 +144,10 @@ void Image::operator=(const Image& other) {
 	/// copy an image into another img
 	/// </summary>
 	/// <param name="other">the image we are copying</param>
+	this->type = other.type;
+	this->number = other.number;
+	this->m_width = other.m_width;
+	this->m_height = other.m_height;
 	for (int i = 0; i < other.m_height; i++)
 		for (int j = 0; j < other.m_width; j++)
 			this->m_data[i][j] = other.m_data[i][j];
@@ -169,18 +183,18 @@ void Image::setP(unsigned int x, unsigned int y, unsigned int val) {
 	this->m_data[x][y] = val;
 }
 
-Image Image::zeros(unsigned int width, unsigned int height) {
+void Image::zeros(unsigned int width, unsigned int height) {
 	/// <summary>
 	/// fill an image with 0
 	/// </summary>
 	/// <param name="width">width of the image</param>
 	/// <param name="height">height of the img</param>
 	/// <returns>the img after</returns>
-	Image img;
 	for (int k = 0; k < height; k++)
 		for (int j = 0; j < width; j++)
-			img.setP(k, j, 0);
-	return img;
+			this->setP(k, j, 0);
+	this->setW(width);
+	this->setH(height);
 }
 
 Image Image::ones(unsigned int width, unsigned int height) {
@@ -203,12 +217,12 @@ bool Image::isEmpty() const {
 	/// </summary>
 	/// <returns>a boolean</returns>
 	if (this->m_height == 0 or this->m_width == 0)
-		return 0;
+		return 1;
 	for (int i = 0; i < this->m_height; i++)
 		for (int j = 0; j < this->m_width; j++)
 			if (this->m_data[i][j] == NULL)
-				return 0;
-	return 1;
+				return 1;
+	return 0;
 }
 
 

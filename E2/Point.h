@@ -6,6 +6,7 @@ private:
 	unsigned int y;
 public:
 	Point();
+	Point(int x, int y);
 	unsigned int getX() const;
 	unsigned int getY() const;
 };

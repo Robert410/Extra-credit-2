@@ -10,7 +10,8 @@ private:
 	unsigned int** m_data;
 	unsigned int m_width;
 	unsigned int m_height;
-
+	char type;
+	int number;
 public:
 	//cONSTRUCTOR
 	Image(); //1
@@ -58,7 +59,7 @@ public:
 	bool getROI(Image& roiImg, unsigned int x, unsigned int y, unsigned int width, unsigned int height);
 	
 	//special image filled with 0/1
-	static Image zeros(unsigned int width, unsigned int height); //1
+	void zeros(unsigned int width, unsigned int height); //1
 	static Image ones(unsigned int width, unsigned int height); //1
 
 	//setpixel
@@ -70,5 +71,22 @@ public:
 
 	void setW(unsigned int H) {
 		this->m_width = H;
+	}
+
+	unsigned int getP(int x, int y) {
+		return m_data[x][y];
+	}
+
+	void setType(char n) {
+		type = n;
+	}
+	void setNr(int nr) {
+		number = nr;
+	}
+	char gettype() {
+		return type;
+	}
+	int getnumber() {
+		return number;
 	}
 };
