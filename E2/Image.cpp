@@ -14,6 +14,7 @@ Image::Image() {
 	/*int** arr = new int* [1000];
 	for (int i = 0; i < 1000; i++)
 		arr[i] = new int[1000];*/
+
 	this->m_data = new unsigned int * [1000];
 	for (int i = 0; i < 1000; i++)
 		this->m_data[i] = new unsigned int[1000];
@@ -30,9 +31,9 @@ Image::Image(unsigned int w, unsigned int h)
 	this->number = 2;
 	this->m_width = w;
 	this->m_height = h;
-	this->m_data = new unsigned int* [h];
-	for (int i = 0; i < h; i++)
-		this->m_data[i] = new unsigned int[w];
+	this->m_data = new unsigned int* [1000];
+	for (int i = 0; i < 1000; i++)
+		this->m_data[i] = new unsigned int[1000];
 }
 //
 //Image::Image(const Image& other) {
@@ -126,8 +127,6 @@ bool Image::save(std::string imagePath) {
 
 bool Image::save(std::string imagePath)
 {
-	cout << "Saving image to: " << imagePath << endl;
-
 	fstream fout;
 	fout.open(imagePath, ofstream::out, ofstream::trunc);
 
@@ -145,7 +144,6 @@ bool Image::save(std::string imagePath)
 		fout << endl;
 	}
 
-	cout << "Saved! " << endl;
 	return true;
 }
 
@@ -308,7 +306,8 @@ void Image::release() {
 	/// <summary>
 	/// Release the space of the memory of the image
 	/// </summary>
-	for (int i = 0; i < m_height; i++)
+	/// 
+	for (int i = 0; i < 1000; i++)
 		delete[] m_data[i];
 	delete[] m_data;
 }

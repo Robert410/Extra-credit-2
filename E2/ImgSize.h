@@ -1,7 +1,9 @@
 #pragma once
 
+#include "namespace.h"
 
-class Size
+
+class ns::Size
 {
 private:
 	unsigned int m_width;

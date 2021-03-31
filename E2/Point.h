@@ -11,5 +11,11 @@ public:
 	Point(int x, int y);
 	unsigned int getX() const;
 	unsigned int getY() const;
+	void setX(unsigned int s) {
+		x = s;
+	}
+	void setY(unsigned int s) {
+		y = s;
+	}
 };
 

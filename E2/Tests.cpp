@@ -5,7 +5,9 @@
 #include "ImageProcessing.h"
 #include "DrawingModules.h"
 #include <cassert>
+
 using namespace ns;
+
 void testPoint() {
 	std::cout << "Point tests.\n";
 	Point a(2, 3), a1;
@@ -61,8 +63,7 @@ void testImg() {
 
 	Point b(2, 2);
 	assert(cop.at(b) == 60);
-	unsigned int* arr = new unsigned int[1000];
-	arr = img2.row(2);
+	unsigned int* arr = img2.row(2);
 
 	Image dst;
 
@@ -124,12 +125,14 @@ void testImg() {
 	//drawLine(one, P1, P2, 0);
 
 	drawRectangle(one, r, 0);
+	delete[] arr;
 }
 
 void testdraw() {
+	std::cout << "Drawing tests\n";
 	Image x;
-	//Rectangle r(100, 100, 100, 130);
-	//Point P1(200, 321), P2(460, 340), center(200, 200);
+	Rectangle r(100, 100, 100, 130);
+	Point P1(200, 321), P2(460, 340), center(200, 200);
 	x.load("brain.pgm");
 	//x.getROI(x, 160, 120, 320, 240);
 	//x.getROI(x,r);
@@ -143,21 +146,23 @@ void testdraw() {
 	//gm.setTita(0.5);
 	//gm.process(x,x);
 
-	//drawCircle(x, center, 100, 0);
-	//drawLine(x, P1, P2, 0);
+	drawCircle(x, center, 100, 0);
 	
-	//drawRectangle(x, P1, P2, 0);
-	//convolution fct;
-	//Image dst;
+	drawLine(x, P1, P2, 0);
+	
+	drawRectangle(x, P1, P2, 0);
+	//setkernelHoFrizontal();
+	//convolution fct(kernel,sobel);
+	Image dst;
 	//fct.process(x, dst);
-	//drawRectangle(x, r, 0);
+	drawRectangle(x, r, 0);
 	//dst.save("D:\\school\\oop\\4\\Lab 4\\E2\\E2\\matrix.asci.pgm");
-
+	
 }
 
 void testALL() {
 	testPoint();
 	testRectangle();
-	//testImg();
+	testImg();
 	testdraw();
 }

@@ -57,51 +57,7 @@ void gamma::process( Image& src, Image& dst) {
 	dst.setType(src.gettype());
 }
 
-void convolution::setkernelIdentity() {
-	/// <summary>
-	/// converring kernel
-	/// </summary>
-	kernel[0][0] = 0; kernel[0][1] = 0; kernel[0][2] = 0;
-	kernel[1][0] = 0; kernel[1][1] = 1; kernel[1][2] = 0;
-	kernel[2][0] = 0; kernel[2][1] = 0; kernel[2][2] = 0;
-}
-
-void convolution::setkernelBlur() {
-	/// <summary>
-	/// converring kernel
-	/// </summary>
-	kernel[0][0] = 1; kernel[0][1] = 1; kernel[0][2] = 1;
-	kernel[1][0] = 1; kernel[1][1] = 1; kernel[1][2] = 1;
-	kernel[2][0] = 1; kernel[2][1] = 1; kernel[2][2] = 1;
-}
-
-void convolution::setkernelGaussian() {
-	/// <summary>
-	/// converring kernel
-	/// </summary>
-	kernel[0][0] = 1; kernel[0][1] = 2; kernel[0][2] = 1;
-	kernel[1][0] = 2; kernel[1][1] = 4; kernel[1][2] = 2;
-	kernel[2][0] = 1; kernel[2][1] = 2; kernel[2][2] = 1;
-}
-
-void convolution::setkernelHorizontal() {
-	/// <summary>
-	/// converring kernel
-	/// </summary>
-	kernel[0][0] = 1; kernel[0][1] = 2; kernel[0][2] = 1;
-	kernel[1][0] = 0; kernel[1][1] = 0; kernel[1][2] = 0;
-	kernel[2][0] = -1; kernel[2][1] = -2; kernel[2][2] = -1;
-}
-
-void convolution::setkernelVertical() {
-	/// <summary>
-	/// converring kernel
-	/// </summary>
-	kernel[0][0] = -1; kernel[0][1] = 0; kernel[0][2] = 1;
-	kernel[1][0] = -2; kernel[1][1] = 0; kernel[1][2] = 2;
-	kernel[2][0] = -1; kernel[2][1] = 0; kernel[2][2] = 1;
-}
-
+/*
 int movx[9] = { -1,-1,-1,0,0,0,1,1,1 };
 int movy[9] = { -1,0,1,-1,0,1,-1,0,1 };
 
@@ -113,7 +69,7 @@ int convolution::csp(Image& src, int x, int y) {
 	/// <param name="x">x coordinate</param>
 	/// <param name="y">y coordinate</param>
 	/// <returns>sum</returns>
-	setkernelBlur();
+	setkernelHorizontal();
 	int sum = 0, i2 = 0, j2 = 0;
 	for (int i = 0; i < 9; i++) {
 		if (j2 == 3) {
@@ -126,8 +82,6 @@ int convolution::csp(Image& src, int x, int y) {
 	}
 	return sum;
 }
-
-
 
 void convolution::process(Image& src, Image& dst) {
 	/// <summary>
@@ -147,7 +101,7 @@ void convolution::process(Image& src, Image& dst) {
 	dst.setNr(src.getnumber());
 	dst.setType(src.gettype());
 }
-
+*/
 adjustment::adjustment() {
 	/*int a, b;
 	std::cout << "Give the alpha: ";
@@ -159,4 +113,64 @@ adjustment::adjustment() {
 	beta = b;
 	std::cout << alpha;*/
 	alpha = 1; beta = 0;
+}
+
+gamma::gamma() {
+	tita = 1;
+}
+
+int movx[9] = { -1,-1,-1,0,0,0,1,1,1 };
+int movy[9] = { -1,0,1,-1,0,1,-1,0,1 };
+
+int convolution::csp(Image& src, int x, int y) {
+	int sum = 0, i2 = 0, j2 = 0;
+	for (int i = 0; i < 9; i++) {
+		if (j2 == 3) {
+			j2 = 0;
+			i2++;
+		}
+		sum += src.getP(x + movx[i], y + movy[i]) * kernel[i2][j2];
+		j2++;
+	}
+	return sum;
+}
+
+void convolution::transform() {
+	int aux;
+	for (int i = 0; i < 3; i++) {
+		aux = kernel[0][i];
+		kernel[0][i] = kernel[2][i];
+		kernel[2][i] = aux;
+	}
+	for (int i = 0; i < 3; i++) {
+		aux = kernel[i][0];
+		kernel[i][0] = kernel[i][2];
+		kernel[i][2] = aux;
+	}
+}
+
+int convolution::identity_function(int x) {
+	return x;
+}
+
+convolution::convolution() {
+	kernel[1][1] = 1;
+	clip = &identity_function;
+}
+
+convolution::convolution(int k[3][3], int (*po)(int)) {
+	for (int i = 0; i < 3; i++)
+		for (int j = 0; j < 3; j++)
+			kernel[i][j] = k[i][j];
+	transform();
+	clip = po;
+}
+
+void convolution::process(ns::Image& src, ns::Image& dst) {
+	dst.zeros(src.width(), src.height());
+	for (int i = 2; i < dst.height(); i++) {
+		for (int j = 2; j < dst.width(); j++) {
+			dst.setP(i, j, clip(csp(src, i, j)));
+		}
+	}
 }

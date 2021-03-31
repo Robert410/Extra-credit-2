@@ -1,11 +1,12 @@
 #include "DrawingModules.h"
 #include <cmath>
+#include "namespace.h"
 using namespace ns;
 float distance(Point P1, Point P2) {
 	return sqrtf((P2.getX() - P1.getX()) * (P2.getX() - P1.getX()) + (P2.getY() - P1.getY()) * (P2.getY() - P1.getY()));
 }
 
-void drawLine(ns::Image& img, Point p1, Point p2, unsigned int color)
+void ns::drawLine(ns::Image& img, Point p1, Point p2, unsigned int color)
 {
 	for (int i = 0; i < img.height(); i++) {
 		for (int j = 0; j < img.width(); j++) {
@@ -16,7 +17,7 @@ void drawLine(ns::Image& img, Point p1, Point p2, unsigned int color)
 	}
 }
 
-void drawCircle(ns::Image& img, Point center, int radius, unsigned int color){
+void ns::drawCircle(ns::Image& img, Point center, int radius, unsigned int color){
 	for (int i = 0; i < img.height(); i++) {
 		for (int j = 0; j < img.width(); j++) {
 			Point P(j, i);
@@ -28,7 +29,7 @@ void drawCircle(ns::Image& img, Point center, int radius, unsigned int color){
 }
 
 
-void drawRectangle(ns::Image& img, Rectangle r, unsigned int color)
+void ns::drawRectangle(ns::Image& img, Rectangle r, unsigned int color)
 {
 	unsigned int limitY = r.getY() + r.getH();
 	unsigned int limitX = r.getX() + r.getW();
@@ -53,7 +54,7 @@ void drawRectangle(ns::Image& img, Rectangle r, unsigned int color)
 	}
 }
 
-void drawRectangle(ns::Image& img, Point p1, Point p2, unsigned int color)
+void ns::drawRectangle(ns::Image& img, Point p1, Point p2, unsigned int color)
 {
 	/// <summary>
 	/// Draw a rectangle between two given points
@@ -63,7 +64,7 @@ void drawRectangle(ns::Image& img, Point p1, Point p2, unsigned int color)
 	/// <param name="p2">second point</param>
 	/// <param name="color">the color</param>
 	Rectangle r(p1, p2);
-	drawRectangle(img, r, color);
+	ns::drawRectangle(img, r, color);
 }
 
 
