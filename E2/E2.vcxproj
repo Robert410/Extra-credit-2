@@ -143,6 +143,7 @@
     <ClInclude Include="Image.h" />
     <ClInclude Include="ImageProcessing.h" />
     <ClInclude Include="ImgSize.h" />
+    <ClInclude Include="namespace.h" />
     <ClInclude Include="Point.h" />
     <ClInclude Include="Rectangle.h" />
     <ClInclude Include="resource.h" />
@@ -164,7 +165,9 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="brain.pgm" />
+    <None Include="matrix.asci.pgm" />
     <None Include="matrix.out" />
+    <None Include="matrix.pgm" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

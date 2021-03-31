@@ -1,6 +1,8 @@
 #include "ImageProcessing.h"
 #include <math.h>
 
+using namespace ns;
+
 unsigned int clip(unsigned int n) {
 	if (n < 0)
 		return 0;
@@ -124,6 +126,7 @@ int convolution::csp(Image& src, int x, int y) {
 	}
 	return sum;
 }
+
 
 
 void convolution::process(Image& src, Image& dst) {

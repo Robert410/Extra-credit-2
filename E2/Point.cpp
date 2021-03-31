@@ -1,5 +1,5 @@
 #include "Point.h"
-
+using namespace ns;
 Point::Point() {
 	/// <summary>
 	/// Construct

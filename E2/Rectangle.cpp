@@ -1,5 +1,7 @@
 #include "Rectangle.h"
-
+#include <iostream>
+using namespace std;
+using namespace ns;
 Rectangle::Rectangle() {
 	/// <summary>
 	/// constructor
@@ -44,4 +46,20 @@ int Rectangle::getW()const {
 	/// get the width coordinate
 	/// </summary>
 	return this->w;
+}
+
+Rectangle::Rectangle(Point P1, Point P2)
+{
+	unsigned int x, y, width, height;
+
+	x = min(P1.getX(), P2.getX());
+	y = max(P1.getY(), P2.getY());
+
+	height = max(P1.getY(), P2.getY()) - min(P1.getY(), P2.getY());
+	width = max(P1.getX(), P2.getX()) - min(P1.getX(), P2.getX());
+
+	this->x = x;
+	this->y = y;
+	this->h = height;
+	this->w = width;
 }

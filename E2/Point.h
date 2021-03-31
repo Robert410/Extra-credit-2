@@ -1,5 +1,7 @@
 #pragma once
-class Point
+#include "namespace.h"
+
+class ns::Point
 {
 private:
 	unsigned int x;

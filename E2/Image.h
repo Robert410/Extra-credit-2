@@ -1,10 +1,12 @@
 #pragma once
 #include <string>
+#include "ImageProcessing.h"
 #include "ImgSize.h"
 #include "Point.h"
 #include "Rectangle.h"
+#include "namespace.h"
 
-class Image{
+class ns::Image{
 
 private:
 	unsigned int** m_data;
@@ -16,7 +18,7 @@ public:
 	//cONSTRUCTOR
 	Image(); //1
 	Image(unsigned int w, unsigned int h); //1
-	Image(const Image& other); //1
+	//Image(const Image& other); //1
 	~Image(); //1
 
 	friend class ImageProcessing;
@@ -60,8 +62,8 @@ public:
 	
 	//special image filled with 0/1
 	void zeros(unsigned int width, unsigned int height); //1
-	static Image ones(unsigned int width, unsigned int height); //1
-
+	void ones(unsigned int width, unsigned int height); //1
+	void whitefill(unsigned int width, unsigned int height);
 	//setpixel
 	void setP(unsigned int x, unsigned int y, unsigned int val);
 	

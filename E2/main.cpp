@@ -4,6 +4,11 @@
 #include "ImageProcessing.h"
 #include "DrawingModules.h"
 #include "Tests.h"
+#define _CRTDBG_MAP_ALLOC
+#include <stdlib.h>
+#include <crtdbg.h>
+
+
 
 int main() {
 	//Image img1, img2;
@@ -35,6 +40,6 @@ int main() {
 
 
 	testALL();
-	
+	_CrtDumpMemoryLeaks();
 	return 0;
 }

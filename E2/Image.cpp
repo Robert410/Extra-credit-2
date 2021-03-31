@@ -4,6 +4,9 @@
 #include <fstream>
 #include <iomanip>
 
+using namespace ns;
+
+using namespace std;
 Image::Image() {
 	///
 	/// Constructor init
@@ -11,8 +14,6 @@ Image::Image() {
 	/*int** arr = new int* [1000];
 	for (int i = 0; i < 1000; i++)
 		arr[i] = new int[1000];*/
-
-
 	this->m_data = new unsigned int * [1000];
 	for (int i = 0; i < 1000; i++)
 		this->m_data[i] = new unsigned int[1000];
@@ -23,38 +24,36 @@ Image::Image() {
 	this->m_width = 0;
 }
 
-Image::Image(unsigned int w, unsigned int h) {
-	/// <summary>
-	/// Constractor with given size
-	/// </summary>
-	/// <param name="w">width</param>
-	/// <param name="h">height</param>
-	m_height = h;
-	m_width = w;
-	m_data = NULL;
+Image::Image(unsigned int w, unsigned int h)
+{
 	this->type = 'P';
-	this->number = 0;
+	this->number = 2;
+	this->m_width = w;
+	this->m_height = h;
+	this->m_data = new unsigned int* [h];
+	for (int i = 0; i < h; i++)
+		this->m_data[i] = new unsigned int[w];
 }
-
-Image::Image(const Image& other) {
-	/// <summary>
-	/// Copy a constructor Image
-	/// </summary>
-	/// <param name="other">The other image for the copy</param>
-	m_height = other.m_height;
-	m_width = other.m_width;
-	this->type = other.type;
-	this->number = other.number;
-	for (int i = 0; i < m_height; i++)
-		for (int j = 0; j < m_width; j++)
-			m_data[i][j] = other.m_data[i][j];
-}
+//
+//Image::Image(const Image& other) {
+//	/// <summary>
+//	/// Copy a constructor Image
+//	/// </summary>
+//	/// <param name="other">The other image for the copy</param>
+//	m_height = other.m_height;
+//	m_width = other.m_width;
+//	this->type = other.type;
+//	this->number = other.number;
+//	for (int i = 0; i < m_height; i++)
+//		for (int j = 0; j < m_width; j++)
+//			m_data[i][j] = other.m_data[i][j];
+//}
 
 Image::~Image() {
 	/// <summary>
 	/// deconstructor
 	/// </summary>
-	delete[] m_data;
+	this->release();
 }
 
 unsigned int Image::width() const{
@@ -93,23 +92,19 @@ bool Image::load(std::string imagePath) {
 	bool ok = 1;
 	std::ifstream fin(imagePath);
 	fin >> type >> number;
-	//std::cout << type << number;;
-	//if (line == "")ok = 0;
-	//std::cout << line;
-	fin >> this->m_height >> this->m_width;
-	//std::cout << "\n" << this->m_height << " " << this->m_width;
+	fin >> this->m_width>> this->m_height;
 	int pixels;
 	fin >> pixels;
-	//std::cout << ' ' << pixels;
-	/*int** arr = new int* [1000];
-	for (int i = 0; i < 1000; i++)
-		arr[i] = new int[1000];*/
 	for (int i = 0; i < this->m_height; i++)
 		for (int j = 0; j < this->m_width; j++)
 			fin >> this->m_data[i][j];
+	
 	return ok;
 }
 
+
+
+/*
 bool Image::save(std::string imagePath) {
 	/// <summary>
 	/// The our image in an external file
@@ -118,14 +113,40 @@ bool Image::save(std::string imagePath) {
 	/// <returns>a bool if the file was open</returns>
 	bool ok = 1;
 	std::ofstream fout(imagePath);
-	fout << type << number << '\n' << m_height << " " << m_width;
+	fout << type << number << "\n#Result\n" << m_height << " " << m_width;
 	fout << "\n255\n";
-	for (int i = 0; i < this->m_height; i++, fout << "\n")
+	for (int i = 0; i < this->m_height; i++){
 		for (int j = 0; j < this->m_width; j++) {
-			fout << this->m_data[i][j];
-			fout << std::setw(15);
+			fout << this->m_data[i][j] << " ";
+			//fout << std::setw(15);
+		} fout << "\n";
 		}
 	return ok;
+}*/
+
+bool Image::save(std::string imagePath)
+{
+	cout << "Saving image to: " << imagePath << endl;
+
+	fstream fout;
+	fout.open(imagePath, ofstream::out, ofstream::trunc);
+
+	fout << "P2" << endl;
+	fout << "# Result image" << endl;
+	//fout << this->m_height << " " << this->m_width << endl;
+	fout << this->m_width << " " << this->m_height << endl;
+	fout << 255 << endl;
+
+
+	for (int i = 0; i < this->m_height; i++) {
+		for (int j = 0; j < this->m_width; j++) {
+			fout << this->m_data[i][j] << " ";
+		}
+		fout << endl;
+	}
+
+	cout << "Saved! " << endl;
+	return true;
 }
 
 std::ostream& operator<<(std::ostream& os,Image& dt) {
@@ -135,7 +156,7 @@ std::ostream& operator<<(std::ostream& os,Image& dt) {
 	/// <param name="os">param for output</param>
 	/// <param name="dt">our image which we display</param>
 	/// <returns>the output</returns>
-	dt.save("matrix.out");
+	dt.save("matrix.pgm");
 	return os;
 }
 
@@ -180,6 +201,9 @@ void Image::setP(unsigned int x, unsigned int y, unsigned int val) {
 	/// <param name="x">x coordinate</param>
 	/// <param name="y">y coordinate</param>
 	/// <param name="val">value</param>
+	if (val < 0)val = 0;
+	if (val > 255)val = 255;
+
 	this->m_data[x][y] = val;
 }
 
@@ -195,20 +219,43 @@ void Image::zeros(unsigned int width, unsigned int height) {
 			this->setP(k, j, 0);
 	this->setW(width);
 	this->setH(height);
+	this->setType('P');
+	this->setNr(2);
 }
 
-Image Image::ones(unsigned int width, unsigned int height) {
+void Image::whitefill(unsigned int width, unsigned int height) {
+	/// <summary>
+	/// fill an image with 0
+	/// </summary>
+	/// <param name="width">width of the image</param>
+	/// <param name="height">height of the img</param>
+	/// <returns>the img after</returns>
+	for (int k = 0; k < height; k++)
+		for (int j = 0; j < width; j++)
+			this->setP(k, j, 255);
+	this->setW(width);
+	this->setH(height);
+	this->setType('P');
+	this->setNr(2);
+}
+
+void Image::ones(unsigned int width, unsigned int height) {
 	/// <summary>
 	/// fill an image with 1
 	/// </summary>
 	/// <param name="width">width of the image</param>
 	/// <param name="height">height of the img</param>
 	/// <returns>the img after</returns>
-	Image img;
+	/// 
 	for (int k = 0; k < height; k++)
 		for (int j = 0; j < width; j++)
-			img.setP(k, j, 1);
-	return img;
+			this->setP(k, j, 1);
+
+	this->setW(width);
+	this->setH(height);
+	this->setType('P');
+	this->setNr(2);
+
 }
 
 bool Image::isEmpty() const {
@@ -261,7 +308,9 @@ void Image::release() {
 	/// <summary>
 	/// Release the space of the memory of the image
 	/// </summary>
-	delete[] this->m_data;
+	for (int i = 0; i < m_height; i++)
+		delete[] m_data[i];
+	delete[] m_data;
 }
 
 bool Image::getROI(Image& roiImg, unsigned int x, unsigned int y, unsigned int height, unsigned int width) {
@@ -274,7 +323,7 @@ bool Image::getROI(Image& roiImg, unsigned int x, unsigned int y, unsigned int h
 	/// <param name="height"></param>
 	/// <param name="width"></param>
 	/// <returns></returns>
-	if (x<0 || y<0 || x + height>this->m_height or y + width> this->m_width)
+	if (x<0 || y<0 || x + height > this->m_height || y + width> this->m_width)
 		return 0;
 	for (int i = 0; i < height; i++)
 		for (int j = 0; j < width; j++)
