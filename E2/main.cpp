@@ -73,8 +73,8 @@ void testInput() {
 	std::cout << "Input testing\n";
 	Image x, dst;
 	std::string imgg1 = "brain.pgm";
-	std::string imgg2 = "brain.pgm";
-	std::string imgg3 = "brain.pgm";
+	std::string imgg2 = "dragon.ascii.pgm";
+	std::string imgg3 = "venus2.ascii.pgm";
 	std::cout << "\n"
 		<< " 1 - Image 1.\n"
 		<< " 2 - Image 2.\n"
@@ -83,8 +83,8 @@ void testInput() {
 	int k;
 	std::cin >> k;
 	if (k == 1)x.load(imgg1);
-	else if (k == 2)x.load(imgg1);
-	else if (k == 3)x.load(imgg1);
+	else if (k == 2)x.load(imgg2);
+	else if (k == 3)x.load(imgg3);
 	std::cout << "\n\nImage loaded! lets begin!\n";
 	int choice;
 	dst = x;

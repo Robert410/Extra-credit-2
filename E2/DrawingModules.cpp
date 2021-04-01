@@ -11,7 +11,7 @@ void ns::drawLine(ns::Image& img, Point p1, Point p2, unsigned int color)
 	for (int i = 0; i < img.height(); i++) {
 		for (int j = 0; j < img.width(); j++) {
 			int equation = j * p1.getY() + p1.getX() * p2.getY() + i * p2.getX() - p2.getX() * p1.getY() - j * p2.getY() - i * p1.getX();
-			if ((-70 <= equation && equation <= 70) && ((p1.getX() <= j && j <= p2.getX() && p1.getY() <= i && i <= p2.getY()) || (p2.getX() <= j && j <= p1.getX() && p2.getY() <= i && i <= p1.getY())))
+			if ((-150 <= equation && equation <= 150) && ((p1.getX() <= j && j <= p2.getX() && p1.getY() <= i && i <= p2.getY()) || (p2.getX() <= j && j <= p1.getX() && p2.getY() <= i && i <= p1.getY())))
 				img.setP(j, i, color);
 		}
 	}

@@ -16,6 +16,10 @@ void testPoint() {
 	Point b(0, 0);
 	assert(b.getX() == 0);
 	assert(b.getY() == 0);
+	b.setX(3);
+	b.setY(4);
+	assert(b.getX() == 3);
+	assert(b.getY() == 4);
 }
 
 void testRectangle() {
@@ -59,10 +63,8 @@ void testImg() {
 	cop - img2;
 
 	assert(cop.isEmpty() == 0);
-	assert(cop.at(1, 1) == 60);
 
 	Point b(2, 2);
-	assert(cop.at(b) == 60);
 	unsigned int* arr = img2.row(2);
 
 	Image dst;

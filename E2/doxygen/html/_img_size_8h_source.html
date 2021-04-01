@@ -97,28 +97,31 @@ $(document).ready(function(){initNavTree('_img_size_8h_source.html',''); initRes
 <div class="contents">
 <a href="_img_size_8h.html">Go to the documentation of this file.</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="preprocessor">#pragma once</span></div>
 <div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160; </div>
-<div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160; </div>
-<div class="line"><a name="l00004"></a><span class="lineno"><a class="line" href="class_size.html">    4</a></span>&#160;<span class="keyword">class </span><a class="code" href="class_size.html">Size</a></div>
-<div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;{</div>
-<div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;<span class="keyword">private</span>:</div>
-<div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;    <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> m_width;</div>
-<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;    <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> m_height;</div>
-<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;<span class="keyword">public</span>:</div>
-<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="class_size.html#a24cb1038bce6b7446f801f9e0eaa4253">setw</a>(<span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> w);</div>
-<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="class_size.html#aaa7fc2cb071f6267516e116295cca9d7">seth</a>(<span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> h);</div>
-<div class="line"><a name="l00012"></a><span class="lineno"><a class="line" href="class_size.html#a3e8b68988166f748de6a3b6efa4b086c">   12</a></span>&#160;    <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> <a class="code" href="class_size.html#a3e8b68988166f748de6a3b6efa4b086c">getw</a>() {</div>
-<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;        <span class="keywordflow">return</span> m_width;</div>
-<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;    }</div>
-<div class="line"><a name="l00015"></a><span class="lineno"><a class="line" href="class_size.html#a02143973a3b7c5cd46112ce5741c923b">   15</a></span>&#160;    <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> <a class="code" href="class_size.html#a02143973a3b7c5cd46112ce5741c923b">geth</a>() {</div>
-<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;        <span class="keywordflow">return</span> m_height;</div>
-<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;    }</div>
-<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;};</div>
-<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160; </div>
-<div class="ttc" id="aclass_size_html"><div class="ttname"><a href="class_size.html">Size</a></div><div class="ttdef"><b>Definition:</b> ImgSize.h:5</div></div>
-<div class="ttc" id="aclass_size_html_a02143973a3b7c5cd46112ce5741c923b"><div class="ttname"><a href="class_size.html#a02143973a3b7c5cd46112ce5741c923b">Size::geth</a></div><div class="ttdeci">unsigned int geth()</div><div class="ttdef"><b>Definition:</b> ImgSize.h:15</div></div>
-<div class="ttc" id="aclass_size_html_a24cb1038bce6b7446f801f9e0eaa4253"><div class="ttname"><a href="class_size.html#a24cb1038bce6b7446f801f9e0eaa4253">Size::setw</a></div><div class="ttdeci">void setw(unsigned int w)</div><div class="ttdef"><b>Definition:</b> ImgSize.cpp:7</div></div>
-<div class="ttc" id="aclass_size_html_a3e8b68988166f748de6a3b6efa4b086c"><div class="ttname"><a href="class_size.html#a3e8b68988166f748de6a3b6efa4b086c">Size::getw</a></div><div class="ttdeci">unsigned int getw()</div><div class="ttdef"><b>Definition:</b> ImgSize.h:12</div></div>
-<div class="ttc" id="aclass_size_html_aaa7fc2cb071f6267516e116295cca9d7"><div class="ttname"><a href="class_size.html#aaa7fc2cb071f6267516e116295cca9d7">Size::seth</a></div><div class="ttdeci">void seth(unsigned int h)</div><div class="ttdef"><b>Definition:</b> ImgSize.cpp:3</div></div>
+<div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="namespace_8h.html">namespace.h</a>&quot;</span></div>
+<div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160; </div>
+<div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160; </div>
+<div class="line"><a name="l00006"></a><span class="lineno"><a class="line" href="classns_1_1_size.html">    6</a></span>&#160;<span class="keyword">class </span><a class="code" href="classns_1_1_size.html">ns::Size</a></div>
+<div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;{</div>
+<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;<span class="keyword">private</span>:</div>
+<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;    <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> m_width;</div>
+<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;    <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> m_height;</div>
+<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;<span class="keyword">public</span>:</div>
+<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="classns_1_1_size.html#a24cb1038bce6b7446f801f9e0eaa4253">setw</a>(<span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> w);</div>
+<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="classns_1_1_size.html#aaa7fc2cb071f6267516e116295cca9d7">seth</a>(<span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> h);</div>
+<div class="line"><a name="l00014"></a><span class="lineno"><a class="line" href="classns_1_1_size.html#aee63667f673506ee3379f61cfa5bbe73">   14</a></span>&#160;    <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> <a class="code" href="classns_1_1_size.html#aee63667f673506ee3379f61cfa5bbe73">getw</a>() {</div>
+<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;        <span class="keywordflow">return</span> m_width;</div>
+<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;    }</div>
+<div class="line"><a name="l00017"></a><span class="lineno"><a class="line" href="classns_1_1_size.html#a63db3a7c1c2a9b0e6331fe56b86331c8">   17</a></span>&#160;    <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> <a class="code" href="classns_1_1_size.html#a63db3a7c1c2a9b0e6331fe56b86331c8">geth</a>() {</div>
+<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;        <span class="keywordflow">return</span> m_height;</div>
+<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;    }</div>
+<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;};</div>
+<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160; </div>
+<div class="ttc" id="aclassns_1_1_size_html"><div class="ttname"><a href="classns_1_1_size.html">ns::Size</a></div><div class="ttdef"><b>Definition:</b> ImgSize.h:7</div></div>
+<div class="ttc" id="aclassns_1_1_size_html_a24cb1038bce6b7446f801f9e0eaa4253"><div class="ttname"><a href="classns_1_1_size.html#a24cb1038bce6b7446f801f9e0eaa4253">ns::Size::setw</a></div><div class="ttdeci">void setw(unsigned int w)</div><div class="ttdef"><b>Definition:</b> ImgSize.cpp:9</div></div>
+<div class="ttc" id="aclassns_1_1_size_html_a63db3a7c1c2a9b0e6331fe56b86331c8"><div class="ttname"><a href="classns_1_1_size.html#a63db3a7c1c2a9b0e6331fe56b86331c8">ns::Size::geth</a></div><div class="ttdeci">unsigned int geth()</div><div class="ttdef"><b>Definition:</b> ImgSize.h:17</div></div>
+<div class="ttc" id="aclassns_1_1_size_html_aaa7fc2cb071f6267516e116295cca9d7"><div class="ttname"><a href="classns_1_1_size.html#aaa7fc2cb071f6267516e116295cca9d7">ns::Size::seth</a></div><div class="ttdeci">void seth(unsigned int h)</div><div class="ttdef"><b>Definition:</b> ImgSize.cpp:5</div></div>
+<div class="ttc" id="aclassns_1_1_size_html_aee63667f673506ee3379f61cfa5bbe73"><div class="ttname"><a href="classns_1_1_size.html#aee63667f673506ee3379f61cfa5bbe73">ns::Size::getw</a></div><div class="ttdeci">unsigned int getw()</div><div class="ttdef"><b>Definition:</b> ImgSize.h:14</div></div>
+<div class="ttc" id="anamespace_8h_html"><div class="ttname"><a href="namespace_8h.html">namespace.h</a></div></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->

@@ -1,4 +1,6 @@
+#include <iostream>
 #include "Point.h"
+
 using namespace ns;
 Point::Point() {
 	/// <summary>
@@ -23,4 +25,19 @@ unsigned int Point::getY() const {
 	/// Get yhe Y coordinate of the point
 	/// </summary>
 	return this->y;
+}
+
+std::ostream& operator<<(std::ostream& os, const Point& P)
+{
+	os << "(" << P.getX() << "," << P.getY() << ")";
+	return os;
+}
+
+std::istream& operator>>(std::istream& is, Point& P)
+{
+	unsigned int x, y;
+	is >> x >> y;
+	P.setX(x);
+	P.setY(y);
+	return is;
 }

@@ -82,5 +82,7 @@
     <None Include="brain.pgm" />
     <None Include="matrix.pgm" />
     <None Include="matrix.asci.pgm" />
+    <None Include="dragon.ascii.pgm" />
+    <None Include="venus2.ascii.pgm" />
   </ItemGroup>
 </Project>

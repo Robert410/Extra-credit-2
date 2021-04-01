@@ -165,9 +165,11 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="brain.pgm" />
+    <None Include="dragon.ascii.pgm" />
     <None Include="matrix.asci.pgm" />
     <None Include="matrix.out" />
     <None Include="matrix.pgm" />
+    <None Include="venus2.ascii.pgm" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

@@ -1,4 +1,5 @@
 #pragma once
+#include <iostream>
 #include "namespace.h"
 
 class ns::Point
@@ -17,5 +18,8 @@ public:
 	void setY(unsigned int s) {
 		y = s;
 	}
+
+	friend std::ostream& operator<<(std::ostream& os, const Point& P);
+	friend std::istream& operator>>(std::istream& os, Point& P);
 };
 

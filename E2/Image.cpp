@@ -3,7 +3,9 @@
 #include <iostream>
 #include <fstream>
 #include <iomanip>
+#include <sstream>
 
+using namespace std;
 using namespace ns;
 
 using namespace std;
@@ -90,15 +92,32 @@ bool Image::load(std::string imagePath) {
 	/// </summary>
 	/// <param name="imagePath">The file we are looking for</param>
 	/// <returns>a boolean if the files was open or not</returns>
-	bool ok = 1;
-	std::ifstream fin(imagePath);
-	fin >> type >> number;
-	fin >> this->m_width>> this->m_height;
+	//bool ok = 1;
+	//std::ifstream fin(imagePath);
+	//fin >> type >> number;
+	//string s,ss;
+	//getline(fin, s);
+
+	//// Continue with a stringstream
+	//fin.rdbuf();
+	int ok = 1;
+	ifstream infile(imagePath);
+	stringstream ss;
+	string inputLine = "";
+
+	getline(infile, inputLine);
+	if (inputLine.compare("P2") != 0) cerr << "Version error" << endl;
+
+	getline(infile, inputLine);
+
+	ss << infile.rdbuf();
+
+	ss >> this->m_width>> this->m_height;
 	int pixels;
-	fin >> pixels;
+	infile >> pixels;
 	for (int i = 0; i < this->m_height; i++)
 		for (int j = 0; j < this->m_width; j++)
-			fin >> this->m_data[i][j];
+			ss >> this->m_data[i][j];
 	
 	return ok;
 }

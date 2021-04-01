@@ -8,5 +8,5 @@ var hierarchy =
     ] ],
     [ "ns::Point", "classns_1_1_point.html", null ],
     [ "ns::Rectangle", "classns_1_1_rectangle.html", null ],
-    [ "Size", "class_size.html", null ]
+    [ "ns::Size", "classns_1_1_size.html", null ]
 ];

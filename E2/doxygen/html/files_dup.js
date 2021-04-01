@@ -1,7 +1,7 @@
 var files_dup =
 [
     [ "DrawingModules.cpp", "_drawing_modules_8cpp.html", "_drawing_modules_8cpp" ],
-    [ "DrawingModules.h", "_drawing_modules_8h.html", "_drawing_modules_8h" ],
+    [ "DrawingModules.h", "_drawing_modules_8h.html", null ],
     [ "Image.cpp", "_image_8cpp.html", "_image_8cpp" ],
     [ "Image.h", "_image_8h.html", [
       [ "Image", "classns_1_1_image.html", "classns_1_1_image" ]
@@ -15,10 +15,10 @@ var files_dup =
     ] ],
     [ "ImgSize.cpp", "_img_size_8cpp.html", null ],
     [ "ImgSize.h", "_img_size_8h.html", [
-      [ "Size", "class_size.html", "class_size" ]
+      [ "Size", "classns_1_1_size.html", "classns_1_1_size" ]
     ] ],
     [ "main.cpp", "main_8cpp.html", "main_8cpp" ],
-    [ "namespace.h", "namespace_8h.html", null ],
+    [ "namespace.h", "namespace_8h.html", "namespace_8h" ],
     [ "Point.cpp", "_point_8cpp.html", null ],
     [ "Point.h", "_point_8h.html", [
       [ "Point", "classns_1_1_point.html", "classns_1_1_point" ]
