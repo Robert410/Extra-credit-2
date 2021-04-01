@@ -18,7 +18,7 @@ public:
 	//cONSTRUCTOR
 	Image(); //1
 	Image(unsigned int w, unsigned int h); //1
-	//Image(const Image& other); //1
+	Image(const Image& other) = delete; 
 	~Image(); //1
 
 	friend class ImageProcessing;

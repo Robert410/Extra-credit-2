@@ -166,6 +166,8 @@
   <ItemGroup>
     <None Include="brain.pgm" />
     <None Include="dragon.ascii.pgm" />
+    <None Include="gator.pgm" />
+    <None Include="hands.pgm" />
     <None Include="matrix.asci.pgm" />
     <None Include="matrix.out" />
     <None Include="matrix.pgm" />

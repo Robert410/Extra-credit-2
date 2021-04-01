@@ -84,5 +84,7 @@
     <None Include="matrix.asci.pgm" />
     <None Include="dragon.ascii.pgm" />
     <None Include="venus2.ascii.pgm" />
+    <None Include="hands.pgm" />
+    <None Include="gator.pgm" />
   </ItemGroup>
 </Project>

@@ -19,7 +19,7 @@ var files_dup =
     ] ],
     [ "main.cpp", "main_8cpp.html", "main_8cpp" ],
     [ "namespace.h", "namespace_8h.html", "namespace_8h" ],
-    [ "Point.cpp", "_point_8cpp.html", null ],
+    [ "Point.cpp", "_point_8cpp.html", "_point_8cpp" ],
     [ "Point.h", "_point_8h.html", [
       [ "Point", "classns_1_1_point.html", "classns_1_1_point" ]
     ] ],

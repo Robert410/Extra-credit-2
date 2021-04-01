@@ -72,7 +72,7 @@ void testInput() {
 	/// </summary>
 	std::cout << "Input testing\n";
 	Image x, dst;
-	std::string imgg1 = "brain.pgm";
+	std::string imgg1 = "gator.pgm";
 	std::string imgg2 = "dragon.ascii.pgm";
 	std::string imgg3 = "venus2.ascii.pgm";
 	std::cout << "\n"
@@ -233,6 +233,7 @@ int main() {
 	testInput();
 
 	testALL();
+
 	_CrtDumpMemoryLeaks();
 	return 0;
 }

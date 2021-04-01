@@ -119,10 +119,10 @@ gamma::gamma() {
 	tita = 1;
 }
 
-int movx[9] = { -1,-1,-1,0,0,0,1,1,1 };
-int movy[9] = { -1,0,1,-1,0,1,-1,0,1 };
 
 int convolution::csp(Image& src, int x, int y) {
+	int movx[9] = { -1,-1,-1,0,0,0,1,1,1 };
+	int movy[9] = { -1,0,1,-1,0,1,-1,0,1 };
 	int sum = 0, i2 = 0, j2 = 0;
 	for (int i = 0; i < 9; i++) {
 		if (j2 == 3) {
@@ -168,8 +168,8 @@ convolution::convolution(int k[3][3], int (*po)(int)) {
 
 void convolution::process(ns::Image& src, ns::Image& dst) {
 	dst.zeros(src.width(), src.height());
-	for (int i = 2; i < dst.height(); i++) {
-		for (int j = 2; j < dst.width(); j++) {
+	for (int i = 1; i < dst.height()-1; i++) {
+		for (int j = 1; j < dst.width()-1; j++) {
 			dst.setP(i, j, clip(csp(src, i, j)));
 		}
 	}

@@ -5,5 +5,7 @@ var classns_1_1_point =
     [ "getX", "classns_1_1_point.html#a05b368d72f25defd478911b368032375", null ],
     [ "getY", "classns_1_1_point.html#aa548bc838df65169968ce55451fe9c83", null ],
     [ "setX", "classns_1_1_point.html#a19cceb4b51ac0e83de05ef6b964276f7", null ],
-    [ "setY", "classns_1_1_point.html#abfc5f15933d1942d0e6741b6278dc294", null ]
+    [ "setY", "classns_1_1_point.html#abfc5f15933d1942d0e6741b6278dc294", null ],
+    [ "operator<<", "classns_1_1_point.html#a9ef22f1acf1fa33a5a0cc5e948796fe5", null ],
+    [ "operator>>", "classns_1_1_point.html#a71be8693de214e0290af0f94180849f6", null ]
 ];

@@ -96,32 +96,38 @@ $(document).ready(function(){initNavTree('_point_8h_source.html',''); initResiza
 </div><!--header-->
 <div class="contents">
 <a href="_point_8h.html">Go to the documentation of this file.</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="preprocessor">#pragma once</span></div>
-<div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="namespace_8h.html">namespace.h</a>&quot;</span></div>
-<div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160; </div>
-<div class="line"><a name="l00004"></a><span class="lineno"><a class="line" href="classns_1_1_point.html">    4</a></span>&#160;<span class="keyword">class </span><a class="code" href="classns_1_1_point.html">ns::Point</a></div>
-<div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;{</div>
-<div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;<span class="keyword">private</span>:</div>
-<div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;    <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> x;</div>
-<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;    <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> y;</div>
-<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;<span class="keyword">public</span>:</div>
-<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;    <a class="code" href="classns_1_1_point.html#ad92f2337b839a94ce97dcdb439b4325a">Point</a>();</div>
-<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;    <a class="code" href="classns_1_1_point.html#ad92f2337b839a94ce97dcdb439b4325a">Point</a>(<span class="keywordtype">int</span> x, <span class="keywordtype">int</span> y);</div>
-<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;    <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> <a class="code" href="classns_1_1_point.html#a05b368d72f25defd478911b368032375">getX</a>() <span class="keyword">const</span>;</div>
-<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;    <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> <a class="code" href="classns_1_1_point.html#aa548bc838df65169968ce55451fe9c83">getY</a>() <span class="keyword">const</span>;</div>
-<div class="line"><a name="l00014"></a><span class="lineno"><a class="line" href="classns_1_1_point.html#a19cceb4b51ac0e83de05ef6b964276f7">   14</a></span>&#160;    <span class="keywordtype">void</span> <a class="code" href="classns_1_1_point.html#a19cceb4b51ac0e83de05ef6b964276f7">setX</a>(<span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> s) {</div>
-<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;        x = s;</div>
-<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;    }</div>
-<div class="line"><a name="l00017"></a><span class="lineno"><a class="line" href="classns_1_1_point.html#abfc5f15933d1942d0e6741b6278dc294">   17</a></span>&#160;    <span class="keywordtype">void</span> <a class="code" href="classns_1_1_point.html#abfc5f15933d1942d0e6741b6278dc294">setY</a>(<span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> s) {</div>
-<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;        y = s;</div>
-<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;    }</div>
-<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;};</div>
+<div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;<span class="preprocessor">#include &lt;iostream&gt;</span></div>
+<div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="namespace_8h.html">namespace.h</a>&quot;</span></div>
+<div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160; </div>
+<div class="line"><a name="l00005"></a><span class="lineno"><a class="line" href="classns_1_1_point.html">    5</a></span>&#160;<span class="keyword">class </span><a class="code" href="classns_1_1_point.html">ns::Point</a></div>
+<div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;{</div>
+<div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;<span class="keyword">private</span>:</div>
+<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;    <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> x;</div>
+<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;    <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> y;</div>
+<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;<span class="keyword">public</span>:</div>
+<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;    <a class="code" href="classns_1_1_point.html#ad92f2337b839a94ce97dcdb439b4325a">Point</a>();</div>
+<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;    <a class="code" href="classns_1_1_point.html#ad92f2337b839a94ce97dcdb439b4325a">Point</a>(<span class="keywordtype">int</span> x, <span class="keywordtype">int</span> y);</div>
+<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;    <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> <a class="code" href="classns_1_1_point.html#a05b368d72f25defd478911b368032375">getX</a>() <span class="keyword">const</span>;</div>
+<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;    <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> <a class="code" href="classns_1_1_point.html#aa548bc838df65169968ce55451fe9c83">getY</a>() <span class="keyword">const</span>;</div>
+<div class="line"><a name="l00015"></a><span class="lineno"><a class="line" href="classns_1_1_point.html#a19cceb4b51ac0e83de05ef6b964276f7">   15</a></span>&#160;    <span class="keywordtype">void</span> <a class="code" href="classns_1_1_point.html#a19cceb4b51ac0e83de05ef6b964276f7">setX</a>(<span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> s) {</div>
+<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;        x = s;</div>
+<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;    }</div>
+<div class="line"><a name="l00018"></a><span class="lineno"><a class="line" href="classns_1_1_point.html#abfc5f15933d1942d0e6741b6278dc294">   18</a></span>&#160;    <span class="keywordtype">void</span> <a class="code" href="classns_1_1_point.html#abfc5f15933d1942d0e6741b6278dc294">setY</a>(<span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> s) {</div>
+<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;        y = s;</div>
+<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;    }</div>
 <div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160; </div>
-<div class="ttc" id="aclassns_1_1_point_html"><div class="ttname"><a href="classns_1_1_point.html">ns::Point</a></div><div class="ttdef"><b>Definition:</b> Point.h:5</div></div>
-<div class="ttc" id="aclassns_1_1_point_html_a05b368d72f25defd478911b368032375"><div class="ttname"><a href="classns_1_1_point.html#a05b368d72f25defd478911b368032375">ns::Point::getX</a></div><div class="ttdeci">unsigned int getX() const</div><div class="ttdef"><b>Definition:</b> Point.cpp:14</div></div>
-<div class="ttc" id="aclassns_1_1_point_html_a19cceb4b51ac0e83de05ef6b964276f7"><div class="ttname"><a href="classns_1_1_point.html#a19cceb4b51ac0e83de05ef6b964276f7">ns::Point::setX</a></div><div class="ttdeci">void setX(unsigned int s)</div><div class="ttdef"><b>Definition:</b> Point.h:14</div></div>
-<div class="ttc" id="aclassns_1_1_point_html_aa548bc838df65169968ce55451fe9c83"><div class="ttname"><a href="classns_1_1_point.html#aa548bc838df65169968ce55451fe9c83">ns::Point::getY</a></div><div class="ttdeci">unsigned int getY() const</div><div class="ttdef"><b>Definition:</b> Point.cpp:21</div></div>
-<div class="ttc" id="aclassns_1_1_point_html_abfc5f15933d1942d0e6741b6278dc294"><div class="ttname"><a href="classns_1_1_point.html#abfc5f15933d1942d0e6741b6278dc294">ns::Point::setY</a></div><div class="ttdeci">void setY(unsigned int s)</div><div class="ttdef"><b>Definition:</b> Point.h:17</div></div>
-<div class="ttc" id="aclassns_1_1_point_html_ad92f2337b839a94ce97dcdb439b4325a"><div class="ttname"><a href="classns_1_1_point.html#ad92f2337b839a94ce97dcdb439b4325a">ns::Point::Point</a></div><div class="ttdeci">Point()</div><div class="ttdef"><b>Definition:</b> Point.cpp:3</div></div>
+<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;    <span class="keyword">friend</span> std::ostream&amp; <a class="code" href="classns_1_1_point.html#a9ef22f1acf1fa33a5a0cc5e948796fe5">operator&lt;&lt;</a>(std::ostream&amp; os, <span class="keyword">const</span> <a class="code" href="classns_1_1_point.html">Point</a>&amp; P);</div>
+<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;    <span class="keyword">friend</span> std::istream&amp; <a class="code" href="classns_1_1_point.html#a71be8693de214e0290af0f94180849f6">operator&gt;&gt;</a>(std::istream&amp; os, <a class="code" href="classns_1_1_point.html">Point</a>&amp; P);</div>
+<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;};</div>
+<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160; </div>
+<div class="ttc" id="aclassns_1_1_point_html"><div class="ttname"><a href="classns_1_1_point.html">ns::Point</a></div><div class="ttdef"><b>Definition:</b> Point.h:6</div></div>
+<div class="ttc" id="aclassns_1_1_point_html_a05b368d72f25defd478911b368032375"><div class="ttname"><a href="classns_1_1_point.html#a05b368d72f25defd478911b368032375">ns::Point::getX</a></div><div class="ttdeci">unsigned int getX() const</div><div class="ttdef"><b>Definition:</b> Point.cpp:16</div></div>
+<div class="ttc" id="aclassns_1_1_point_html_a19cceb4b51ac0e83de05ef6b964276f7"><div class="ttname"><a href="classns_1_1_point.html#a19cceb4b51ac0e83de05ef6b964276f7">ns::Point::setX</a></div><div class="ttdeci">void setX(unsigned int s)</div><div class="ttdef"><b>Definition:</b> Point.h:15</div></div>
+<div class="ttc" id="aclassns_1_1_point_html_a71be8693de214e0290af0f94180849f6"><div class="ttname"><a href="classns_1_1_point.html#a71be8693de214e0290af0f94180849f6">ns::Point::operator&gt;&gt;</a></div><div class="ttdeci">friend std::istream &amp; operator&gt;&gt;(std::istream &amp;os, Point &amp;P)</div><div class="ttdef"><b>Definition:</b> Point.cpp:36</div></div>
+<div class="ttc" id="aclassns_1_1_point_html_a9ef22f1acf1fa33a5a0cc5e948796fe5"><div class="ttname"><a href="classns_1_1_point.html#a9ef22f1acf1fa33a5a0cc5e948796fe5">ns::Point::operator&lt;&lt;</a></div><div class="ttdeci">friend std::ostream &amp; operator&lt;&lt;(std::ostream &amp;os, const Point &amp;P)</div><div class="ttdef"><b>Definition:</b> Point.cpp:30</div></div>
+<div class="ttc" id="aclassns_1_1_point_html_aa548bc838df65169968ce55451fe9c83"><div class="ttname"><a href="classns_1_1_point.html#aa548bc838df65169968ce55451fe9c83">ns::Point::getY</a></div><div class="ttdeci">unsigned int getY() const</div><div class="ttdef"><b>Definition:</b> Point.cpp:23</div></div>
+<div class="ttc" id="aclassns_1_1_point_html_abfc5f15933d1942d0e6741b6278dc294"><div class="ttname"><a href="classns_1_1_point.html#abfc5f15933d1942d0e6741b6278dc294">ns::Point::setY</a></div><div class="ttdeci">void setY(unsigned int s)</div><div class="ttdef"><b>Definition:</b> Point.h:18</div></div>
+<div class="ttc" id="aclassns_1_1_point_html_ad92f2337b839a94ce97dcdb439b4325a"><div class="ttname"><a href="classns_1_1_point.html#ad92f2337b839a94ce97dcdb439b4325a">ns::Point::Point</a></div><div class="ttdeci">Point()</div><div class="ttdef"><b>Definition:</b> Point.cpp:5</div></div>
 <div class="ttc" id="anamespace_8h_html"><div class="ttname"><a href="namespace_8h.html">namespace.h</a></div></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
